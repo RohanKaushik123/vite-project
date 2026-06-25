@@ -1,16 +1,91 @@
-# React + Vite
+# Vite Project - Employee Management System Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based Employee Management System frontend built with Vite, featuring a responsive UI for managing employee records.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- ⚡ Lightning-fast development with Vite
+- ⚛️ React 19 for building user interfaces
+- 🎨 Responsive design with modern CSS
+- 📱 Mobile-friendly employee cards grid
+- ➕ Add and delete employee functionality
+- 🔍 Clean and intuitive UI
+- 📊 Employee management dashboard
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+vite-project/
+├── index.html              # HTML entry point
+├── vite.config.js         # Vite configuration
+├── eslint.config.js       # ESLint configuration
+├── package.json           # Project dependencies
+├── src/
+│   ├── main.jsx           # React app entry point
+│   ├── App.jsx            # Main application component
+│   ├── App.css            # App styles
+│   ├── index.css          # Global styles
+│   └── assets/            # Static assets
+└── public/                # Static files
+```
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/RohanKaushik123/vite-project.git
+cd vite-project
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+Application available at `http://localhost:5173`
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Live Demo
+
+🌍 Deployed to GitHub Pages: [https://rohankaushik123.github.io/vite-project/](https://rohankaushik123.github.io/vite-project/)
+
+## Technologies Used
+
+- **Vite** - Next generation frontend build tool
+- **React 19** - UI library
+- **CSS 3** - Modern styling with Grid and Flexbox
+- **ESLint** - Code quality
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## License
+
+This project is open source and available under the MIT License.
+
+## Contact
+
+For questions or support, reach out to [RohanKaushik123](https://github.com/RohanKaushik123)
