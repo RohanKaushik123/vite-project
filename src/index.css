@@ -1,4 +1,4 @@
-{ margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: Arial, sans-serif; background: #f4f6f8; min-height: 100vh; }
 
 .container { max-width: 1100px; margin: auto; padding: 30px; }
@@ -25,4 +25,4 @@ h1 { text-align: center; margin-bottom: 25px; color: #222; }
 
 .delete-btn:hover { opacity: 0.9; }
 
-Task to Add // Edit Employee // Search Employee // Filter by Department // Employee Count // Dark Mode
+/* Task to Add // Edit Employee // Search Employee // Filter by Department // Employee Count // Dark Mode */
