@@ -5,55 +5,80 @@ function App() {
   const [formData, setFormData] = useState({
     name: "",
     department: "",
-    salary: "",
+    salary: ""
   });
+  const [error, setError] = useState("");
 
   const API_URL = "http://localhost:5100/employees";
 
-  // FETCH EMPLOYEES
   const getEmployees = async () => {
-    const response = await fetch(API_URL);
-    const data = await response.json();
-    setEmployees(data);
+    try {
+      const response = await fetch(API_URL);
+
+      if (!response.ok) {
+        throw new Error("Unable to load employees");
+      }
+
+      const data = await response.json();
+      setEmployees(data);
+      setError("");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   useEffect(() => {
     getEmployees();
   }, []);
 
-  // HANDLE INPUT
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
   };
 
-  // ADD EMPLOYEE
   const addEmployee = async (e) => {
     e.preventDefault();
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-    if (response.ok) {
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, salary: Number(formData.salary) })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "Unable to add employee");
+      }
+
       setFormData({ name: "", department: "", salary: "" });
-      getEmployees();
+      await getEmployees();
+    } catch (err) {
+      setError(err.message);
     }
   };
 
-  // DELETE EMPLOYEE
   const deleteEmployee = async (id) => {
-    const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
-    if (response.ok) {
-      getEmployees();
+    try {
+      const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+
+      if (!response.ok) {
+        throw new Error("Unable to delete employee");
+      }
+
+      await getEmployees();
+    } catch (err) {
+      setError(err.message);
     }
   };
 
   return (
     <div className="container">
       <h1>Employee Management System</h1>
+      {error && <p style={{ color: "crimson" }}>{error}</p>}
+
       <form onSubmit={addEmployee}>
         <input
           type="text"
@@ -93,12 +118,12 @@ function App() {
         </thead>
         <tbody>
           {employees.map((emp) => (
-            <tr key={emp.id}>
+            <tr key={emp._id || emp.id}>
               <td>{emp.name}</td>
               <td>{emp.department}</td>
               <td>${emp.salary}</td>
               <td>
-                <button onClick={() => deleteEmployee(emp.id)}>Delete</button>
+                <button onClick={() => deleteEmployee(emp._id || emp.id)}>Delete</button>
               </td>
             </tr>
           ))}
